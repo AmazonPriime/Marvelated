@@ -10,6 +10,6 @@
   font-size: 1.2em;
   max-width: 500px;
   margin: 0 auto;
-  padding: 1em 0;
+  padding: 1em
 }
 </style>
