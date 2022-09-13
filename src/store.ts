@@ -1,9 +1,19 @@
 import { reactive } from 'vue';
 
-export default reactive<{ results: any, updateResults: any, selectedMovie: any }>({
+type MarvelatedStore = {
+  results: any,
+  updateResults: any,
+  selectedMovie: any,
+  setSelectedMovie: any,
+};
+
+export default reactive<MarvelatedStore>({
   results: [],
   updateResults(results: any) {
     this.results = results;
   },
   selectedMovie: {},
+  setSelectedMovie(movie: any) {
+    this.selectedMovie = movie;
+  },
 });

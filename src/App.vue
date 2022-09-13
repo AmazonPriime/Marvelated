@@ -5,6 +5,7 @@
     <Description />
     <Search />
     <Results />
+    <SelectedMovie />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import Header from './components/Header.vue';
 import Description from './components/Description.vue';
 import Search from './components/Search.vue';
 import Results from './components/Results.vue';
+import SelectedMovie from './components/SelectedMovie.vue';
 
 @Component({
   components: {
@@ -21,6 +23,7 @@ import Results from './components/Results.vue';
     Description,
     Search,
     Results,
+    SelectedMovie,
   },
 })
 

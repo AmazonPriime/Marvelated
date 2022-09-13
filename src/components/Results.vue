@@ -2,11 +2,13 @@
     <div class="results">
         <div v-if="store.results.length > 0" class="movies-container">
             <div v-for="movie of store.results" :key="movie.id" class="movie">
-                <img
-                    :alt="movie.original_title + ' Poster'"
-                    :src="'https://image.tmdb.org/t/p/original' + movie.poster_path"
-                    v-if="movie.poster_path"
-                />
+                <div @click="store.setSelectedMovie(movie)">
+                    <img
+                        :alt="movie.original_title + ' Poster'"
+                        :src="'https://image.tmdb.org/t/p/original' + movie.poster_path"
+                        v-if="movie.poster_path"
+                    />
+                </div>
             </div>
         </div>
         <div v-else class="movies-container">
