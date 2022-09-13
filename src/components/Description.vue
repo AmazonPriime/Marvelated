@@ -7,9 +7,9 @@
 
 <style scoped>
 .description {
-  font-size: 1.2em;
+  font-size: 18px;
   max-width: 500px;
   margin: 0 auto;
-  padding: 1em
+  padding: 16px;
 }
 </style>
