@@ -23,14 +23,12 @@
             >
                 {{ person.name }} (<i>{{ person.character }}</i>)
             </span>
-            <br />
-            <span class="release-date">
+            <p class="release-date">
                 Released: {{ store.selectedMovie.release_date }}
-            </span>
-            <br />
-            <span class="runtime">
+            </p>
+            <p class="runtime">
                 Runtime: {{ store.selectedMovie.runtime }} mins
-            </span>
+            </p>
         </div>
     </div>
 </template>
@@ -70,6 +68,7 @@ export default class SelectedMovie extends Vue {
 .runtime, .release-date {
     font-size: 14px;
     font-weight: bold;
+    margin: 0;
 }
 
 .credits {

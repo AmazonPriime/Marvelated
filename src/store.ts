@@ -37,7 +37,10 @@ export default reactive<MarvelatedStore>({
       .then((data) => {
         if (data) {
           this.selectedMovieCredits = data;
-          console.log(data?.cast.splice(0, 5));
+          console.log({
+            movie: this.selectedMovie,
+            credit: data,
+          });
         }
       });
   },
