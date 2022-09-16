@@ -15,7 +15,7 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 export default reactive<MarvelatedStore>({
   results: [],
   updateResults(results: any) {
-    this.results = results;
+    this.results = results.filter((res: any) => res.poster_path);
   },
   selectedMovie: {},
   selectedMovieCredits: {},
@@ -37,10 +37,6 @@ export default reactive<MarvelatedStore>({
       .then((data) => {
         if (data) {
           this.selectedMovieCredits = data;
-          console.log({
-            movie: this.selectedMovie,
-            credit: data,
-          });
         }
       });
   },

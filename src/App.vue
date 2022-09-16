@@ -4,8 +4,9 @@
     <img alt="Marvel logo" src="./assets/marvel_logo.png" />
     <Description />
     <Search />
-    <Results />
-    <SelectedMovie />
+    <Results v-if="store.results.length > 0" />
+    <SelectedMovie v-if="JSON.stringify(store.selectedMovie) !== '{}'" />
+    <Related v-if="JSON.stringify(store.selectedMovie) !== '{}'" />
   </div>
 </template>
 
@@ -16,6 +17,8 @@ import Description from './components/Description.vue';
 import Search from './components/Search.vue';
 import Results from './components/Results.vue';
 import SelectedMovie from './components/SelectedMovie.vue';
+import Related from './components/Related.vue';
+import store from './store';
 
 @Component({
   components: {
@@ -24,10 +27,13 @@ import SelectedMovie from './components/SelectedMovie.vue';
     Search,
     Results,
     SelectedMovie,
+    Related,
   },
 })
 
-export default class App extends Vue {}
+export default class App extends Vue {
+  store = store;
+}
 </script>
 
 <style>

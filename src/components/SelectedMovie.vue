@@ -9,19 +9,25 @@
             <h1 class="title">
                 {{ store.selectedMovie.original_title }}
                 <span class="year">
-                    ({{ store.selectedMovie.release_date.substring(0, 4) }})
+                    ({{ store.selectedMovie.release_date?.substring(0, 4) }})
                 </span>
             </h1>
             <span class="overview">
                 {{ store.selectedMovie.overview }}
             </span>
             <hr />
+            <b>Cast:</b>
+            {{ ' ' }}
             <span
                 class="credits"
-                v-for="person in store.selectedMovieCredits.cast.slice(0,5)"
+                v-for="person in store.selectedMovieCredits.cast?.slice(0,10)"
                 v-bind:key="person.cast_id"
             >
-                {{ person.name }} (<i>{{ person.character }}</i>)
+                {{ person.name }} <i>({{ person.character }})</i>
+            </span>
+            {{ ' ' }}
+            <span v-if="store.selectedMovieCredits.cast?.length > 10">
+                <b>and {{ store.selectedMovieCredits.cast?.length - 10 }} more!</b>
             </span>
             <p class="release-date">
                 Released: {{ store.selectedMovie.release_date }}
@@ -45,9 +51,7 @@ export default class SelectedMovie extends Vue {
 
 <style scoped>
 .movie-container {
-    margin-top: 16px;
-    margin-left: 16px;
-    margin-right: 16px;
+    margin: 16px;
     text-align: left;
     display: flex;
     gap: 1em;
