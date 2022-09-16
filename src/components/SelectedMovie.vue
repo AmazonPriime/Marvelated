@@ -12,6 +12,25 @@
                     ({{ store.selectedMovie.release_date.substring(0, 4) }})
                 </span>
             </h1>
+            <span class="overview">
+                {{ store.selectedMovie.overview }}
+            </span>
+            <hr />
+            <span
+                class="credits"
+                v-for="person in store.selectedMovieCredits.cast.slice(0,5)"
+                v-bind:key="person.cast_id"
+            >
+                {{ person.name }} (<i>{{ person.character }}</i>)
+            </span>
+            <br />
+            <span class="release-date">
+                Released: {{ store.selectedMovie.release_date }}
+            </span>
+            <br />
+            <span class="runtime">
+                Runtime: {{ store.selectedMovie.runtime }} mins
+            </span>
         </div>
     </div>
 </template>
@@ -30,6 +49,7 @@ export default class SelectedMovie extends Vue {
 .movie-container {
     margin-top: 16px;
     margin-left: 16px;
+    margin-right: 16px;
     text-align: left;
     display: flex;
     gap: 1em;
@@ -45,5 +65,20 @@ export default class SelectedMovie extends Vue {
 
 .year {
     font-size: 20px;
+}
+
+.runtime, .release-date {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.credits {
+    font-size: 14px;
+}
+
+hr {
+    border-style: solid;
+    border-color: grey;
+    border-top: 0;
 }
 </style>
