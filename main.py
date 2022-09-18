@@ -7,7 +7,7 @@ load_dotenv()
 
 KEY = os.getenv('API_KEY')
 URL = "https://api.themoviedb.org/3/"
-LIST_ID = 12179  # id of the list containing mcu movies
+LIST_ID = 8217984  # id of the list containing mcu movies
 
 # get movies from the list
 req = requests.get(f'{URL}list/{LIST_ID}?api_key={KEY}')
