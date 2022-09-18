@@ -1,5 +1,5 @@
 <template>
-    <div v-if="store.selectedMovie" class="movie-container">
+    <div v-if="JSON.stringify(store.selectedMovie) !== '{}'" class="movie-container">
         <img
             :alt="store.selectedMovie.original_title + ' Poster'"
             :src="'https://image.tmdb.org/t/p/original' + store.selectedMovie.poster_path"

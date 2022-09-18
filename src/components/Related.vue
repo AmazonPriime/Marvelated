@@ -3,8 +3,44 @@
         <div class="header">
             Related Cast / Crew
         </div>
-        <div v-if="people.length > 0" class="people-container">
-            People go here or something
+        <div v-if="Object.entries(store.relatedCastCrew).length > 0" class="related-details">
+            Found a total of <b>{{ Object.entries(store.relatedCastCrew).length }}</b> related
+            cast and crew members from <b>{{ store.selectedMovie.title }}</b>!
+        </div>
+        <div v-if="Object.entries(store.relatedCastCrew).length > 0" class="people-container">
+            <div
+                v-for="[id, details] in Object.entries(store.relatedCastCrew)"
+                v-bind:key="id"
+                class="person"
+            >
+                <img
+                    :alt="details.name + ' Picture'"
+                    :src="'https://image.tmdb.org/t/p/original' + details.profile_path"
+                    v-if="!!details.profile_path"
+                    onerror="https://www.pngitem.com/pimgs/m/80-801053_aws-simple-icons-non-service-specific-user-default.png"
+                />
+                <img
+                    :alt="details.name + ' Picture'"
+                    :src="'https://www.pngitem.com/pimgs/m/80-801053_aws-simple-icons-non-service-specific-user-default.png'"
+                    v-else
+                />
+                <br />
+                <span class="name">
+                    {{ details.name }}
+                </span>
+                <span class="known-for">
+                    {{ details.known_for }}
+                </span>
+                <div class="roles">
+                    Roles
+                </div>
+                <div v-for="credit in details.credits" v-bind:key="credit" class="credits">
+                    {{ credit.name }}
+                    <span class="credit-movie">
+                        {{ credit.movie }}
+                    </span>
+                </div>
+            </div>
         </div>
         <div v-else class="no-people">
             There aren't any crew or cast members in this movie that have
@@ -18,20 +54,10 @@
 <script lang="ts">
 import store from '@/store';
 import { Vue, Component } from 'vue-property-decorator';
-import marvelMovieDetails from '../static/mcu_movies.json';
-
-const people: any = [];
-// loop over selected cast/crew get their ids
-// if they are in the data mcu_movies.json (people key)
-// add them to the people array
-
-// loop over people array and search for job/character
-// in in the data mcu_movies.json (movies key)
-// if they are in a movie add their role/job to their people object
 
 @Component
 export default class Related extends Vue {
-    people = people;
+    store = store;
 }
 </script>
 
@@ -52,6 +78,19 @@ export default class Related extends Vue {
     height: 5px;
     background-color: #ED1D24;
 }
+.roles {
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-column-gap: 5px;
+    align-items: center;
+    font-weight: bold;
+}
+.roles::before, .roles::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: gray;
+}
 .no-people {
     font-size: 22px;
     max-width: 1000px;
@@ -65,5 +104,42 @@ export default class Related extends Vue {
     margin: 0 auto;
     margin-top: 16px;
     margin-bottom: 16px;
+}
+.people-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25em;
+}
+
+.person {
+    width: 300px;
+}
+.person hr {
+    border-style: solid;
+    border-color: grey;
+    border-top: 0;
+}
+.person img {
+    max-height: 300px !important;
+    height: auto !important;
+    border-radius: 10px;
+}
+.name {
+    font-weight: bold;
+}
+.known-for {
+    font-size: 14px;
+    color: gray;
+    display: block;
+}
+.credit-movie {
+    font-size: 12px;
+    color: gray;
+    display: block;
+    margin-bottom: 5px;
+}
+.related-details {
+    margin: 16px;
 }
 </style>

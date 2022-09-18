@@ -17,7 +17,7 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 const onInputChange = (e: Event) => {
   const target = e.target as HTMLTextAreaElement;
   const url = `${BASE_URL}search/movie?api_key=${KEY}&query=${target.value}`;
-  if (target.value.length > 5) {
+  if (target.value.length > 2) {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
