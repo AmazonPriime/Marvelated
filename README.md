@@ -1,7 +1,7 @@
 # Marvelated
 Web application which allows the user to search for a movie and see how the cast of the movie relate to the Marvel shows and movies. It'll show each of the cast/crew and the roles they had in the Marvel movies.
 
-### TMDb API Key
+### TMDb API Key
 Project requires an API key, you can get this directly from TMDb by signing up: [TMDb](https://developers.themoviedb.org/3/getting-started/authentication).
 
 ### Run the Project
